@@ -3,28 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Countdown</title>
+    <title>Styled Countdown</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #FFFFFF;
+            color: #000000;
             padding: 50px;
         }
+        h1 {
+            font-size: 24px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
         .timer {
-            font-size: 2em;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FFFFFF;
+            border: 2px solid #00878F;
+            border-radius: 10px;
+            width: 100px;
+            height: 100px;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .time-box span {
+            font-size: 40px;
             font-weight: bold;
-            margin-top: 20px;
+            color: #00878F;
+        }
+        .time-label {
+            font-size: 14px;
+            color: #000000;
         }
     </style>
 </head>
 <body>
     <h1>Countdown to Midnight, November 29, 2024 (GMT)</h1>
-    <div class="timer" id="timer">Loading...</div>
+    <div class="timer" id="timer">
+        <div class="time-box">
+            <span id="days">0</span>
+            <div class="time-label">DAYS</div>
+        </div>
+        <div class="time-box">
+            <span id="hours">0</span>
+            <div class="time-label">HOURS</div>
+        </div>
+        <div class="time-box">
+            <span id="minutes">0</span>
+            <div class="time-label">MINUTES</div>
+        </div>
+        <div class="time-box">
+            <span id="seconds">0</span>
+            <div class="time-label">SECONDS</div>
+        </div>
+    </div>
     <script>
         function updateTimer() {
-            const targetDate = new Date('2024-11-29T00:00:00Z'); // Set target date in UTC
+            const targetDate = new Date('2024-11-29T00:00:00Z'); // Set your countdown end time
             const now = new Date();
             const timeLeft = targetDate - now;
 
@@ -34,18 +77,20 @@
                 return;
             }
 
-            // Calculate days, hours, minutes, and seconds
+            // Calculate time components
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            // Display the result
-            document.getElementById('timer').innerHTML = 
-                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            // Update the timer display
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
         }
 
-        // Run the timer every second
+        // Update the timer every second
         const timerInterval = setInterval(updateTimer, 1000);
         updateTimer(); // Initial call to display immediately
     </script>
