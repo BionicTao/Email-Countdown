@@ -12,15 +12,10 @@
             color: #000000;
             padding: 50px;
         }
-        h1 {
-            font-size: 24px;
-            color: #000000;
-            margin-bottom: 20px;
-        }
         .timer {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 20px;
         }
         .time-box {
             display: flex;
@@ -30,38 +25,53 @@
             border: 2px solid #00878F;
             border-radius: 10px;
             width: 100px;
-            height: 100px;
+            height: 120px;
             justify-content: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         .time-box span {
             font-size: 40px;
             font-weight: bold;
             color: #00878F;
         }
-        .time-label {
+        .time-box .time-label {
             font-size: 14px;
             color: #000000;
+            margin-top: 5px;
+        }
+        .time-box .divider {
+            width: 80%;
+            height: 2px;
+            background-color: #00878F;
+            margin: 5px 0;
+        }
+        h1 {
+            display: none; /* Hide the heading */
         }
     </style>
 </head>
 <body>
-    <h1>Countdown to Midnight, November 29, 2024 (GMT)</h1>
+    <h1>Countdown to Midnight, November 29, 2024 (GMT)</h1> <!-- This will be hidden -->
     <div class="timer" id="timer">
         <div class="time-box">
             <span id="days">0</span>
+            <div class="divider"></div>
             <div class="time-label">DAYS</div>
         </div>
         <div class="time-box">
             <span id="hours">0</span>
+            <div class="divider"></div>
             <div class="time-label">HOURS</div>
         </div>
         <div class="time-box">
             <span id="minutes">0</span>
+            <div class="divider"></div>
             <div class="time-label">MINUTES</div>
         </div>
         <div class="time-box">
             <span id="seconds">0</span>
+            <div class="divider"></div>
             <div class="time-label">SECONDS</div>
         </div>
     </div>
