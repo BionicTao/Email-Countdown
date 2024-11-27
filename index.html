@@ -24,28 +24,30 @@
     <div class="timer" id="timer">Loading...</div>
     <script>
         function updateTimer() {
-            const targetDate = new Date('2024-11-29T00:00:00Z'); // Set your countdown end date in UTC
+            const targetDate = new Date('2024-11-29T00:00:00Z'); // Set target date in UTC
             const now = new Date();
             const timeLeft = targetDate - now;
 
             if (timeLeft <= 0) {
                 document.getElementById('timer').innerHTML = "The countdown has ended!";
-                clearInterval(timerInterval);
+                clearInterval(timerInterval); // Stop the timer
                 return;
             }
 
+            // Calculate days, hours, minutes, and seconds
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000)) / 1000);
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
+            // Display the result
             document.getElementById('timer').innerHTML = 
                 `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
-        // Update the timer every second
+        // Run the timer every second
         const timerInterval = setInterval(updateTimer, 1000);
-        updateTimer(); // Initial call to display the timer immediately
+        updateTimer(); // Initial call to display immediately
     </script>
 </body>
 </html>
